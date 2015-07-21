@@ -1,0 +1,20 @@
+[web]
+SiteName = koji
+#KojiTheme = mytheme
+
+# Key urls
+KojiHubURL = http://{{ hostvars[groups['koji'][0]]['inventory_hostname'] }}/kojihub
+KojiFilesURL = http://{{ hostvars[groups['koji_web'][0]]['inventory_hostname'] }}/kojifiles
+
+# SSL authentication options
+WebCert = /etc/pki/koji/pems/{{ ansible_fqdn }}.pem
+ClientCA = /etc/pki/koji/koji_ca_cert.crt
+KojiHubCA = /etc/pki/koji/koji_ca_cert.crt
+
+LoginTimeout = 72
+
+# This must be changed and uncommented before deployment
+Secret = {{ koji_web_secret }}
+
+LibPath = /usr/share/koji-web/lib
+
