@@ -16,13 +16,6 @@ Roles are:
 
 For example of all-in-one setup go to https://github.com/kostyrevaa/ansible-koji-infra
 
-Requirements
-------------
-
-This role will work on:
-
- * Red Hat 6
- * CentOS 6
 
 Role Variables
 --------------
