@@ -15,6 +15,7 @@
   tags:
     - koji-web-conf
     - koji-web
+    - koji-web-config
 
 - name: Configure /etc/httpd/conf.d/kojiweb.conf
   template: src=kojiweb.conf.j2 dest=/etc/httpd/conf.d/kojiweb.conf owner=root group=root mode=0644
@@ -22,6 +23,7 @@
   tags:
     - koji-web-apache-conf
     - koji-web
+    - koji-web-config
 
 - name: issue cert for kojiweb
   shell: "{{ ca_root_path }}/certgen.sh {{ item }}"
