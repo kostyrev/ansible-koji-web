@@ -17,7 +17,12 @@ Alias /koji "/usr/share/koji-web/scripts/wsgi_publisher.py"
 </Directory>
 
 # uncomment this to enable authentication via SSL client certificates
+{% if koji_web_force_ssl %}
+<Location /koji>
+    SSLRequireSSL
+{% else %}
 <Location /koji/login>
+{% endif %}
     SSLVerifyClient require
     SSLVerifyDepth  10
     SSLOptions +StdEnvVars

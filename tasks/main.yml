@@ -14,6 +14,7 @@
   notify: httpd graceful
   tags:
     - koji-web-conf
+    - koji-apache-conf
     - koji-web
     - koji-web-config
 
@@ -22,7 +23,19 @@
   notify: httpd graceful
   tags:
     - koji-web-apache-conf
+    - koji-apache-conf
     - koji-web
+    - koji-web-config
+
+- name: Configure /etc/httpd/conf.d/ssl.conf
+  template: src=ssl.conf.j2 dest=/etc/httpd/conf.d/ssl.conf owner=root group=root mode=0644
+  when: koji_web_render_ssl_conf
+  notify: httpd graceful
+  tags:
+    - koji-web
+    - koji-web-ssl
+    - koji-apache-conf
+    - koji-apache-conf
     - koji-web-config
 
 - name: issue cert for kojiweb

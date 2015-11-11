@@ -1,10 +1,17 @@
 ---
 # defaults file for koji-web
 koji_web_issue_cert: false
-koji_web_ssl: true
-koji_web_url_prefix: "{{ 'http://' if koji_web_ssl == false else 'https://' }}"
+koji_web_render_ssl_conf: true
+koji_web_force_ssl: false
+koji_web_url_prefix: "{{ 'https://' if koji_web_force_ssl == true else 'http://' }}"
 koji_web_KojiHubURL: "http://{{ hostvars[groups['koji_hub'][0]]['inventory_hostname'] }}/kojihub"
-koji_web_KojiFilesURL: "{{ koji_web_url_prefix }}{{ hostvars[groups['koji_web'][0]]['inventory_hostname'] }}/kojifiles"
+koji_web_KojiFilesURL: "{{ koji_web_url_prefix }}{{ hostvars[groups['koji_hub'][0]]['inventory_hostname'] }}/kojifiles"
 koji_web_WebCert: /etc/pki/koji/pems/{{ ansible_fqdn }}.pem
 koji_web_ClientCA: /etc/pki/koji/koji_ca_cert.crt
 koji_web_KojiHubCA: /etc/pki/koji/koji_ca_cert.crt
+koji_web_apache_SSLCertificateFile: /etc/pki/koji/certs/{{ ansible_fqdn }}.crt
+koji_web_apache_SSLCertificateKeyFile: /etc/pki/koji/private/{{ ansible_fqdn }}.key
+koji_web_apache_SSLCertificateChainFile: "{{ koji_web_ClientCA }}"
+koji_web_apache_SSLCACertificateFile: "{{ koji_web_ClientCA }}"
+koji_web_apache_SSLVerifyDepth: 10
+koji_web_apache_SSLVerifyClient: require
