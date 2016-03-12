@@ -1,6 +1,8 @@
 ---
 # defaults file for koji-web
 koji_web_issue_cert: false
+koji_web_ca_base_path: /etc/pki/koji
+koji_web_ca_cert_path: "{{ koji_hub_ca_base_path }}/koji_ca_cert.crt"
 koji_web_render_ssl_conf: true
 koji_web_force_ssl: false
 koji_web_url_prefix: "{{ 'https://' if koji_web_force_ssl == true else 'http://' }}"

@@ -1,0 +1,10 @@
+---
+
+- name: check {{ cert_file }} exists
+  stat:
+    path: "{{ cert_file }}"
+  register: file
+
+- fail:
+    msg: "Whoops! there is no {{ cert_file }} "
+  when: file.stat.exists == False
