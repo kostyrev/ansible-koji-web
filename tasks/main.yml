@@ -1,12 +1,15 @@
 ---
 # tasks file for koji-web
+- name: install {{ koji_web_package }}
+  package:
+    name: "{{ koji_web_package }}"
+    state: present
 
 - name: Install | Install required Packages
   package:
     name: "{{ item }}"
     state: present
   with_items:
-    - koji-web
     - mod_ssl
   tags:
     - koji-web

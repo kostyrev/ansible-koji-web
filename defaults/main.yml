@@ -1,5 +1,6 @@
 ---
 # defaults file for koji-web
+koji_web_package: koji-web-1.10.1-1.el7.centos
 koji_web_issue_cert: false
 koji_web_ca_base_path: /etc/pki/koji
 koji_web_ca_cert_path: "{{ koji_hub_ca_base_path }}/koji_ca_cert.crt"
