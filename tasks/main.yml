@@ -20,7 +20,7 @@
     src: web.conf.j2
     dest: /etc/kojiweb/web.conf
     owner: root
-    group: root
+    group: apache
     mode: '0640'
   notify: httpd graceful
   tags:
