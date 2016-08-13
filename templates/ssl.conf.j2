@@ -41,7 +41,7 @@ SSLCertificateFile      {{ koji_web_apache_SSLCertificateFile }}
 SSLCertificateKeyFile   {{ koji_web_apache_SSLCertificateKeyFile }}
 SSLCertificateChainFile {{ koji_web_apache_SSLCertificateChainFile }}
 SSLCACertificateFile    {{ koji_web_apache_SSLCACertificateFile }}
-{% if koji_web_force_ssl == true %}
+{% if koji_web_force_ssl %}
 SSLVerifyClient         {{ koji_web_apache_SSLVerifyClient }}
 SSLVerifyDepth          {{ koji_web_apache_SSLVerifyDepth }}
 {% endif %}
